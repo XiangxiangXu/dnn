@@ -24,6 +24,10 @@ infomat:  Phi1 (W)  Phi2 Psi2
 
 W is not an information matrix.
 """
+# notation is a little differnt:
+# s1, v1, b1 correspond to    t, w, c in the paper
+# s2, v2, b2 correspond to    s, v, b in the paper
+
 def get_w_mat(b_mat, Phi1, Psi2, J):
     """
        Get W
@@ -92,10 +96,17 @@ sgd = SGD(lr=4, decay=1e-6, momentum=0.9, nesterov=True, clipnorm=.1)
 model.compile(loss='categorical_crossentropy',
               optimizer=sgd,
               metrics=['accuracy'])
-# with a Sequential model    
+# with a Sequential model
+
 start_time = time.time()
+
+# compute the empirical distributions
 Pxy_hat = get_p_hat_mat(XLabels, YLabels)
+
+# compute the corresponding B matrix
 Bxy_hat = p2b(Pxy_hat)
+
+# compute marginals
 Px_hat = np.sum(Pxy_hat, axis = 0)
 Py_hat = np.sum(Pxy_hat, axis = 1)
 U, s, V = np.linalg.svd(Bxy_hat)

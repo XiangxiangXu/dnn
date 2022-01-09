@@ -10,6 +10,15 @@ def print_for_tikz(x_list):
         s = s + str((i+1, x_list[i]))
     return s
 
+def save_table_for_tikz(mean_list, std_list, fname):
+    l = len(mean_list)
+    index = np.arange(1, l + 1)
+    mat = np.zeros([l, 3])
+    mat[:, 0] = index
+    mat[:, 1] = mean_list
+    mat[:, 2] = std_list
+    np.savetxt(fname, mat)
+
 def p2b(p_mat):
     p_x = np.sum(p_mat, 0)
     p_y = np.sum(p_mat, 1)
