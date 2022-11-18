@@ -1,5 +1,5 @@
 # Feature Extraction in DNN
-Numerical Experiments on Feature Extraction in DNN 
+This repo contains suppoting demos for [1]. The features learned by DNNs are compared with theoretical results.
 
 1. exp1.py: feature extraction for network with ideal expressive power
 2. exp2.py: feature extraction for network with restricted expressive power
